@@ -1,2 +1,2 @@
-# devops-prototypes
-Prototypes and PoCs
+# Simulate enterprise envrionment - variety of services 
+
