@@ -1,7 +1,7 @@
 
 
-docker image build .
+docker image build -t madpole/mysql:latest .
 
-docker container run --name asz_mysql -d -p 3306:3306 madpole/mysql
+docker container run --name asz_mysql -d -p 3306:3306 madpole/mysql:latest
 
 docker container exec -it asz_mysql 'bash'

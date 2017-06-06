@@ -2,8 +2,7 @@ FROM mysql:5.7.15
 
 MAINTAINER me
 
-ENV MYSQL_DATABASE=mydb \
-    MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_ROOT_PASSWORD=root
 
 ADD init.sql /docker-entrypoint-initdb.d
 
