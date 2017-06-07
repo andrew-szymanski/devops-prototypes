@@ -11,9 +11,8 @@ log() {
 log "$0 starting..."
 
 # mickey mouse - write json to send
-JSON_FILE=/tmp/registration.json
-rm -fr ${JSON_FILE}
-echo '{' >> ${JSON_FILE}
+JSON_FILE=/tmp/registration.json 
+echo '{' > ${JSON_FILE}
 echo '"code": "MYSQL",' >> ${JSON_FILE}
 echo '"name": "MYSQL",' >> ${JSON_FILE}
 echo '"description": "mysql database",' >> ${JSON_FILE}
