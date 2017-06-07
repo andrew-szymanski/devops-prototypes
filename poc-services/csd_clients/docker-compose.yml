@@ -2,3 +2,5 @@ version: '3'
 services:
   mysql-server:
     build: mysql-server/.
+  mysql-client:
+    build: mysql-client/.
