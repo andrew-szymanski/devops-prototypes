@@ -10,12 +10,22 @@ function ctrl_c() {
 log() {
     date "+%m-%d:%H:%M:%S $*" | grep -iv 'passw'
 }
+ 
+insert_row() {
+    mysql --host=${DATABASE_SERVER} --database=${DATABASE_NAME} --user=${USER_NAME} --password=${PASSWORD} -e "INSERT INTO mytable (sometext) VALUES (\"test\")"
+}
 
 
 # ***************
 # *** loop sleeping...
 # ***************
 log "$0 starting..."
+
+
+DATABASE_NAME=${DATABASE_NAME:=mydb}
+USER_NAME=${USER_NAME=myuser}
+PASSWORD=${PASSWORD=mysql}
+DATABASE_SERVER=${DATABASE_SERVER=172.20.0.2}   # should not have default, but set for manual testing
 
 SLEEP_TIME=${SLEEP_TIME:=3}
 while true; do
