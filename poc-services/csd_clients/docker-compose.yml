@@ -1,6 +1,10 @@
 version: '3'
 services:
-  mysql-server:
-    build: mysql-server/.
-  mysql-client:
-    build: mysql-client/.
+   mysql-server:
+      build: mysql-server/.
+   mysql-client:
+      build: mysql-client/.
+   flask-register-client:
+      build: flask-register-client/.
+      ports:
+         - "5000:5000"
