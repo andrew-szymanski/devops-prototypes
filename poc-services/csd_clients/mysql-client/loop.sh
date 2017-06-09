@@ -26,7 +26,7 @@ log "$0 starting..."
 DATABASE_NAME=${DATABASE_NAME:=mydb}
 USER_NAME=${USER_NAME=myuser}
 PASSWORD=${PASSWORD=mysql}
-DATABASE_SERVER=${DATABASE_SERVER=172.20.0.2}   # should not have default, but set for manual testing
+DATABASE_SERVER=${DATABASE_SERVER=172.17.0.2}   # should not have default, but set for manual testing
 
 # this docker
 

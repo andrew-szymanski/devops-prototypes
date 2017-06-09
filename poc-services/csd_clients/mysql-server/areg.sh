@@ -27,7 +27,7 @@ log "executing curl, json file:"
 log "------ start -------"
 cat ${JSON_FILE}
 log "------ end -------"
-curl -H "Accept: application/json" -H "Content-type: application/json"  -X POST --data @${JSON_FILE} https://swe1.celarius.com:1443/api/v1/groups
+curl -H "Accept: application/json" -H "Content-type: application/json"  -X POST --data @${JSON_FILE} https://aaaa.com:1443/api/v1/groups
 
 log "$0 DONE"
 
