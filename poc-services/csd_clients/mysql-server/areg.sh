@@ -10,8 +10,15 @@ log() {
 # ***************
 log "$0 starting..."
 
-# mickey mouse - write json to send
-JSON_FILE=/tmp/registration.json 
+
+if [ -z "$URI" ]; then
+   log "ERROR: URI env var not specified - run docker with '--env URI=https://hostname:4032/api/vi1' option"
+   exit 1
+fi
+
+
+
+JSON_FILE=/tmp/registration.json
 echo '{' > ${JSON_FILE}
 echo '"code": "MYSQL",' >> ${JSON_FILE}
 echo '"name": "MYSQL",' >> ${JSON_FILE}

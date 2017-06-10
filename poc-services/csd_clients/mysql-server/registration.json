@@ -1,6 +1,20 @@
-{
-    "code": "MYSQL",
-    "name": "MySQL",
-    "description": "mysql database",
-    "meta": ""
-}
+  {
+    "group": {
+      "code": "ASZ"
+    },
+    "component": {
+      "code": "MYSQL"
+    },
+    "namespace": {
+      "code": "ASZ"
+    },
+    "instances": [
+      {
+        "transport": "TCP",
+        "protocol": "mysql",
+        "hostname": "$REGISTER_HOSTNAME",
+        "ipv4": "$REGISTER_IP",
+        "port": 3306
+      }
+    ]
+  }
