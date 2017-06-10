@@ -10,7 +10,7 @@ RUN git clone https://github.com/andrew-szymanski/python-rest-clients.git && cd 
 
 ADD areg.sh /docker-entrypoint-initdb.d
 ADD init.sql /docker-entrypoint-initdb.d
-ADD registration.json /registration.json
+ADD registration.json.template /registration.json.template
 
 
 EXPOSE 3306

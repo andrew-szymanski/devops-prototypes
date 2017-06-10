@@ -16,30 +16,20 @@ if [ -z "$URI" ]; then
    exit 1
 fi
 
+# env vars required for json template
+REGISTER_IP=$(hostname -i)
+REGISTER_HOSTNAME=$(hostname)
 
-JSON_TEMPLATE=/registration.json
+# replace variables in json template
+JSON_TEMPLATE=/registration.json.JSON_TEMPLATE
 JSON_FILE=/registration.json
+cat ${JSON_TEMPLATE} | envsubst > ${JSON_FILE}
 
-sed "s/\$LOG_FILE_PATH/$LOG_FILE_PATH/g" input > output
-
-echo '{' > ${JSON_FILE}
-echo '"code": "MYSQL",' >> ${JSON_FILE}
-echo '"name": "MYSQL",' >> ${JSON_FILE}
-echo '"description": "mysql database",' >> ${JSON_FILE}
-# meta
-IP=$(hostname -i)
-printf '"meta": "%s"\n' "${IP}" >> ${JSON_FILE}
-echo '}' >> ${JSON_FILE} >> ${JSON_FILE}
-
-
-
-log "executing curl, json file:"
-log "------ start -------"
-cat ${JSON_FILE}
-log "------ end -------"
-curl -H "Accept: application/json" -H "Content-type: application/json"  -X POST --data @${JSON_FILE} ${URI}/groups
+# call python client to register
+# write config file for python cli
+echo "URI=${URI}" > /rest_client.config
+/python-rest-clients/cli/cli.py  -d true -c /rest_client.config  -x helpers/service_discovery_helper.ServiceDiscoveryClient.register
 
 log "$0 DONE"
 
-# {"code": "MYSQL","name": "MySQL","description": "mysql database","meta": ""}
 
