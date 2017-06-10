@@ -17,8 +17,11 @@ if [ -z "$URI" ]; then
 fi
 
 
+JSON_TEMPLATE=/registration.json
+JSON_FILE=/registration.json
 
-JSON_FILE=/tmp/registration.json
+sed "s/\$LOG_FILE_PATH/$LOG_FILE_PATH/g" input > output
+
 echo '{' > ${JSON_FILE}
 echo '"code": "MYSQL",' >> ${JSON_FILE}
 echo '"name": "MYSQL",' >> ${JSON_FILE}
@@ -34,7 +37,7 @@ log "executing curl, json file:"
 log "------ start -------"
 cat ${JSON_FILE}
 log "------ end -------"
-curl -H "Accept: application/json" -H "Content-type: application/json"  -X POST --data @${JSON_FILE} https://aaaa.com:1443/api/v1/groups
+curl -H "Accept: application/json" -H "Content-type: application/json"  -X POST --data @${JSON_FILE} ${URI}/groups
 
 log "$0 DONE"
 
